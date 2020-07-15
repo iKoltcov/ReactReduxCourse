@@ -1,19 +1,21 @@
 import React from 'react';
-import { Component } from 'react';
-import Header from './Header.js';
-import Button from './Button.js';
+import Header from './Header';
+import Search from './Search'
+import TodoList from './TodoList';
 
-class App extends Component {
-  render(){
-    return (
-      <div>
-        <Header/>
-        <Button/>
-        <Button/>
-        <Button/>
-      </div>
-    );
-  }
+export default class App extends React.Component {
+    render() {
+        const tasks = [ 
+            {value: "First task"}, 
+            {value: "Second task"}
+        ];
+
+        return (
+            <React.StrictMode>
+                <Header />
+                <Search />
+                <TodoList items={ tasks } />
+            </React.StrictMode>
+        );
+    }
 }
-
-export default App;
