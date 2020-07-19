@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from './Header';
-import Search from './Search'
-import TodoList from './TodoList';
+import Header from '../Header/Header';
+import Search from '../Search/Search'
+import TodoList from '../TodoList/TodoList';
 
 export default class App extends React.Component {
     render() {
         const tasks = [ 
-            {value: "First task"}, 
-            {value: "Second task"}
+            {id: 1, value: "First task"}, 
+            {id: 2, value: "Second task"}
         ];
 
         return (

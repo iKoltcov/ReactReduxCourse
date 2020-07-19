@@ -1,12 +1,12 @@
 import React from 'react';
 
-import '../Styles/Header.css'
+import './Header.css'
 
 export default class Header extends React.Component {
     render(){
         return (
             <div id='header'>
-                <span>Todo app!</span>
+                <h1>Todo app!</h1>
             </div>
         );
     }
