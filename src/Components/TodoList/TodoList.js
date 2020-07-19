@@ -1,7 +1,7 @@
-import React from 'react'
-import TodoListItem from '../TodoListItem/TodoListItem'
+import React, {Component} from 'react'
+import TodoListItem from '../todoListItem/TodoListItem'
 
-export default class TodoList extends React.Component {
+export default class TodoList extends Component {
     render()
     {
         const elements = this.props.items

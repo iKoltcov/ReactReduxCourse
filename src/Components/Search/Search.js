@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default class Search extends React.Component {
+export default class Search extends Component {
     render()
     {
         return <input type="text" class="form-control"></input>;
