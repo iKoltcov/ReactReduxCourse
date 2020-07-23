@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import Header from '../header/Header';
-import Search from '../search/Search'
-import TodoList from '../todoList/TodoList';
+import Header from '../header/header';
+import Search from '../search/search'
+import TodoList from '../todo-list/todo-list';
+import ItemFilter from '../item-filter/item-filter';
+
+import './app.css';
 
 export default class App extends Component {
     render() {
@@ -12,9 +15,14 @@ export default class App extends Component {
 
         return (
             <React.StrictMode>
-                <Header />
-                <Search />
-                <TodoList items={ tasks } />
+                <div className="todo-app">
+                    <Header />
+                    <div className="top-panel d-flex">
+                        <Search />
+                        <ItemFilter />
+                    </div>
+                    <TodoList items={ tasks } />
+                </div>
             </React.StrictMode>
         );
     }
