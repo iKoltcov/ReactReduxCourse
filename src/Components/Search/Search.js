@@ -6,8 +6,7 @@ export default class Search extends Component {
     render()
     {
         return (
-            <input type="text" 
-                className="form-control search-input"></input>
+            <input type="text" className="form-control search-input"></input>
         );
     }
 }
