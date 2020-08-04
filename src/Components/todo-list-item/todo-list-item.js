@@ -9,14 +9,18 @@ export default class TodoListItem extends Component {
     };
 
     onDoneClick = () => {
-        this.setState({
-            done: !this.state.done,
+        this.setState(({done}) => {
+            return {
+                done: !done,
+            }
         });
     };
 
     onImportantClick = () => {
-        this.setState({
-            important: !this.state.important,
+        this.setState(({important}) => {
+            return {
+                important: !important
+            }
         });
     };
     
@@ -25,17 +29,13 @@ export default class TodoListItem extends Component {
         const { label } = this.props;
         const { done, important } = this.state;
 
-        const style = {
-            color: important ? 'steelblue' : 'black',
-            fontWeight: important ? 'bold' : 'normal',
-        };
-
         let classNames = 'todo-list-item';
         if(done) classNames += ' done';
+        if(important) classNames += ' important';
 
         return (
             <span className={classNames}>
-                <span className='todo-list-item-label' style={style}>
+                <span className='todo-list-item-label' >
                     {label}
                 </span>
 
