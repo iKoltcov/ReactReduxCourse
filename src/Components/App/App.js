@@ -14,6 +14,7 @@ export default class App extends Component {
             {id: 2, label: "Second task", done: true}, 
             {id: 3, label: "Third task"},
         ],
+        filter: 'all'
     }
 
     deleteItem = (id) => {
@@ -39,27 +40,49 @@ export default class App extends Component {
         }
     }
 
-    onToggleImportant = (id) => {
+    onToggleProperty = (id, propName) => {
         this.setState(({tasks}) => {
             const idx = tasks.findIndex((el) => el.id === id);
-            const task = {...tasks[idx], important: !tasks[idx].important};
+            const task = {...tasks[idx], [propName]: !tasks[idx][propName]};
             
             return {
                 tasks: [...tasks.slice(0, idx), task, ...tasks.slice(idx + 1)]
             }
         });
+    }
+
+    onToggleImportant = (id) => {
+        this.onToggleProperty(id, 'important');
     };
 
     onToggleDone = (id) => {
-        this.setState(({tasks}) => {
-            const idx = tasks.findIndex((el) => el.id === id);
-            const task = {...tasks[idx], done: !tasks[idx].done};
-            
-            return {
-                tasks: [...tasks.slice(0, idx), task, ...tasks.slice(idx + 1)]
-            }
-        });
+        this.onToggleProperty(id, 'done');
     };
+
+    onChangeFilter = (filter) => {
+        this.setState({filter});
+    }
+
+    tasksFilter = (tasks) => {
+        return tasks.filter( (task) => {
+            const {filter} = this.state;
+
+            if(filter === 'all')
+            {
+                return true;
+            }
+            else
+            if(filter === 'done' && task.done){
+                return true;
+            }
+            else
+            if(filter === 'active' && !task.done){
+                return true;
+            }
+
+            return false;
+        });
+    }
 
     render() {
         const {tasks} = this.state;
@@ -74,10 +97,10 @@ export default class App extends Component {
                     <Header todo={todo} done={done} />
                     <div className="top-panel d-flex">
                         <Search />
-                        <ItemFilter />
+                        <ItemFilter onChangeFilter={this.onChangeFilter} />
                     </div>
                     <TodoList 
-                        items={ tasks }
+                        items={ this.tasksFilter(tasks) }
                         onDeleted={ this.deleteItem } 
                         onToggleDone={ this.onToggleDone }
                         onToggleImportant={ this.onToggleImportant } />
