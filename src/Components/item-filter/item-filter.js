@@ -3,15 +3,9 @@ import React, {Component} from 'react';
 import './item-filter.css';
 
 export default class ItemFilter extends Component {    
-    state = {
-        //TODO[IK] Investigate how we can use enum in js
-        filter: 'all'
-    };
-
     setFilter(filter) {
         if(filter === 'all' || filter === 'active' || filter === 'done') {
             this.props.onChangeFilter(filter);
-            this.setState({filter: filter})
         }
     }
 
@@ -19,7 +13,7 @@ export default class ItemFilter extends Component {
         const defaultClasses = "btn btn-outline-secondary";
         const chosenClasses = "btn btn-info";
 
-        return this.state.filter === filter ? chosenClasses : defaultClasses
+        return this.props.filter === filter ? chosenClasses : defaultClasses
     }
 
     render(){

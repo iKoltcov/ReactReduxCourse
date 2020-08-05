@@ -14,7 +14,8 @@ export default class App extends Component {
             {id: 2, label: "Second task", done: true}, 
             {id: 3, label: "Third task"},
         ],
-        filter: 'all'
+        filter: 'all',
+        searchText: ''
     }
 
     deleteItem = (id) => {
@@ -63,29 +64,41 @@ export default class App extends Component {
         this.setState({filter});
     }
 
+    onChangeSearchText = (searchText) => {
+        console.log(searchText);
+        this.setState({searchText});
+    }
+
     tasksFilter = (tasks) => {
         return tasks.filter( (task) => {
-            const {filter} = this.state;
+            const {filter, searchText} = this.state;
+            let result = false;
 
             if(filter === 'all')
             {
-                return true;
+                result = true;
             }
             else
-            if(filter === 'done' && task.done){
-                return true;
+            if(filter === 'done' && task.done)
+            {
+                result = true;
             }
             else
-            if(filter === 'active' && !task.done){
-                return true;
+            if(filter === 'active' && !task.done)
+            {
+                result = true;
             }
 
-            return false;
+            if(result && !!searchText){
+                result = task.label.search(new RegExp(searchText, 'i')) !== -1;
+            }
+
+            return result;
         });
     }
 
     render() {
-        const {tasks} = this.state;
+        const {tasks, filter} = this.state;
         const done = tasks.reduce((num, task) => {
             return task.done === true ? num + 1: num
         }, 0);
@@ -96,8 +109,8 @@ export default class App extends Component {
                 <div className="todo-app">
                     <Header todo={todo} done={done} />
                     <div className="top-panel d-flex">
-                        <Search />
-                        <ItemFilter onChangeFilter={this.onChangeFilter} />
+                        <Search onChangeSearchText={this.onChangeSearchText}/>
+                        <ItemFilter onChangeFilter={this.onChangeFilter} filter={filter} />
                     </div>
                     <TodoList 
                         items={ this.tasksFilter(tasks) }
