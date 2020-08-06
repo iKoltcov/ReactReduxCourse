@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../header/header';
-import Search from '../search/search'
+import SearchPanel from '../search/search-panel'
 import TodoList from '../todo-list/todo-list';
 import ItemFilter from '../item-filter/item-filter';
 import ItemAddForm from '../item-add-form/item-add-form';
@@ -65,55 +65,54 @@ export default class App extends Component {
     }
 
     onChangeSearchText = (searchText) => {
-        console.log(searchText);
         this.setState({searchText});
     }
 
-    tasksFilter = (tasks) => {
-        return tasks.filter( (task) => {
-            const {filter, searchText} = this.state;
-            let result = false;
+    tasksSearch = (tasks, searchText) => {
+        if(!!searchText)
+        {
+            const loweredSearchText = searchText.toLowerCase();
 
-            if(filter === 'all')
-            {
-                result = true;
-            }
-            else
-            if(filter === 'done' && task.done)
-            {
-                result = true;
-            }
-            else
-            if(filter === 'active' && !task.done)
-            {
-                result = true;
-            }
+            return tasks.filter(
+                (task) => task.label.toLowerCase().indexOf(loweredSearchText) > -1);
+        }
 
-            if(result && !!searchText){
-                result = task.label.search(new RegExp(searchText, 'i')) !== -1;
-            }
+        return tasks;
+    }
 
-            return result;
-        });
+    tasksFilter = (tasks, filter) => {
+        switch(filter)
+        {
+            case 'all':
+                return tasks;   
+            case 'done':
+                return tasks.filter((task) => task.done);
+            case 'active':
+                return tasks.filter((task) => !task.done);
+            default:
+                return tasks;
+        }
     }
 
     render() {
-        const {tasks, filter} = this.state;
+        const {tasks, filter, searchText} = this.state;
         const done = tasks.reduce((num, task) => {
-            return task.done === true ? num + 1: num
+            return task.done ? num + 1: num
         }, 0);
         const todo = tasks.length - done;
+
+        const visibleTasks = this.tasksSearch(this.tasksFilter(tasks, filter), searchText); 
 
         return (
             <React.StrictMode>
                 <div className="todo-app">
                     <Header todo={todo} done={done} />
                     <div className="top-panel d-flex">
-                        <Search onChangeSearchText={this.onChangeSearchText}/>
+                        <SearchPanel onChangeSearchText={this.onChangeSearchText} />
                         <ItemFilter onChangeFilter={this.onChangeFilter} filter={filter} />
                     </div>
                     <TodoList 
-                        items={ this.tasksFilter(tasks) }
+                        items={ visibleTasks }
                         onDeleted={ this.deleteItem } 
                         onToggleDone={ this.onToggleDone }
                         onToggleImportant={ this.onToggleImportant } />

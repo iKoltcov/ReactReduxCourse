@@ -9,20 +9,30 @@ export default class ItemFilter extends Component {
         }
     }
 
-    getButtonClasses(filter) {
-        const defaultClasses = "btn btn-outline-secondary";
-        const chosenClasses = "btn btn-info";
-
-        return this.props.filter === filter ? chosenClasses : defaultClasses
-    }
+    buttons = [
+        { name: 'all', label: 'All' },
+        { name: 'active', label: 'Active' },
+        { name: 'done', label: 'Done' },
+    ];
 
     render(){
+        const { filter } = this.props;
+
+        const buttons = this.buttons.map( ({name, label}) => {
+            const classes = filter === name ? "btn btn-info" : "btn btn-outline-secondary";
+            return (
+                <button 
+                    type="button" 
+                    key={name}
+                    className={classes} 
+                    onClick={() => this.setFilter(name)}>
+                        {label}
+                </button>
+            );
+        });
+
         return (
-            <div className="btn-group">
-                <button type="button" className={this.getButtonClasses('all')} onClick={() => this.setFilter('all')}>All</button>
-                <button type="button" className={this.getButtonClasses('active')} onClick={() => this.setFilter('active')}>Active</button>
-                <button type="button" className={this.getButtonClasses('done')} onClick={() => this.setFilter('done')}>Done</button>
-            </div>
+            <div className="btn-group">{buttons}</div>
         );
     }
 }
