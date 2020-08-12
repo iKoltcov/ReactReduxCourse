@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import './header.css';
 
 export default class Header extends Component {
     render() {
         return (
-            <div className="d-flex">
+            <div className="header-component d-flex">
                 <h1>StarWars DB</h1>
-                <div>
-                    <span>Characters</span>
-                    <span>Starships</span>
-                    <span>Planets</span>
+                <div className='route-panel'>
+                    <button className='btn btn-link'>Characters</button>
+                    <button className='btn btn-link'>Starships</button>
+                    <button className='btn btn-link'>Planets</button>
                 </div>
             </div>
         );

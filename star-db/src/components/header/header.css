@@ -1,0 +1,8 @@
+.header-component {
+    margin: 2rem 0 2rem 0; 
+}
+
+.header-component .route-panel {
+    display: inline-flex;
+    vertical-align: middle;
+}
