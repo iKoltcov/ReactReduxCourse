@@ -1,6 +1,6 @@
-namespace StarWarsApi.Models
+namespace StarWarsApi.Web.Abstraction.ApiModels
 {
-    public class PlanetModel
+    public class PlanetApiModel
     {
         public int Id { get; set; }
         

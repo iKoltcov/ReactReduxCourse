@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace StarWarsApi
 {
@@ -27,6 +21,11 @@ namespace StarWarsApi
             services.AddControllers();
 
             services.AddSwaggerGen();
+        }
+        
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new WebAutofacModule());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

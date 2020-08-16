@@ -2,12 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>StarWarsApi</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Autofac" Version="5.2.0" />
+      <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.5.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StarWarsApi.Services\StarWarsApi.Services.csproj" />
+      <ProjectReference Include="..\StarWarsApi.Web.Abstraction\StarWarsApi.Web.Abstraction.csproj" />
     </ItemGroup>
 
 

@@ -1,6 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi", "StarWarsApi\StarWarsApi.csproj", "{EB675B92-8541-4583-82A0-C118CDBA216C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Web", "StarWarsApi.Web\StarWarsApi.Web.csproj", "{EB675B92-8541-4583-82A0-C118CDBA216C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Services", "StarWarsApi.Services\StarWarsApi.Services.csproj", "{6F4EC163-EAEF-40F7-8503-BF8A1463B0D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Repositories", "StarWarsApi.Repositories\StarWarsApi.Repositories.csproj", "{2EFB9BF4-7CE1-4596-81A7-DF2C30AF81E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Services.Abstraction", "StarWarsApi.Services.Abstraction\StarWarsApi.Services.Abstraction.csproj", "{F56731E9-A817-4620-A8C6-35413817CBA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Web.Abstraction", "StarWarsApi.Web.Abstraction\StarWarsApi.Web.Abstraction.csproj", "{7DEBDB33-3760-45B6-8E7D-C96D8F334AF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +20,21 @@ Global
 		{EB675B92-8541-4583-82A0-C118CDBA216C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB675B92-8541-4583-82A0-C118CDBA216C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB675B92-8541-4583-82A0-C118CDBA216C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4EC163-EAEF-40F7-8503-BF8A1463B0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4EC163-EAEF-40F7-8503-BF8A1463B0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4EC163-EAEF-40F7-8503-BF8A1463B0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4EC163-EAEF-40F7-8503-BF8A1463B0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFB9BF4-7CE1-4596-81A7-DF2C30AF81E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFB9BF4-7CE1-4596-81A7-DF2C30AF81E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFB9BF4-7CE1-4596-81A7-DF2C30AF81E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFB9BF4-7CE1-4596-81A7-DF2C30AF81E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56731E9-A817-4620-A8C6-35413817CBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56731E9-A817-4620-A8C6-35413817CBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56731E9-A817-4620-A8C6-35413817CBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56731E9-A817-4620-A8C6-35413817CBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEBDB33-3760-45B6-8E7D-C96D8F334AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEBDB33-3760-45B6-8E7D-C96D8F334AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEBDB33-3760-45B6-8E7D-C96D8F334AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEBDB33-3760-45B6-8E7D-C96D8F334AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
