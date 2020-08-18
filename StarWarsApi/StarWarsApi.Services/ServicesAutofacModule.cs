@@ -9,6 +9,7 @@ namespace StarWarsApi.Services
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<PlanetService>().As<IPlanetService>();
+            builder.RegisterType<CharacterService>().As<ICharacterService>();
             
             builder.RegisterModule(new RepositoriesAutofacModule());
         }

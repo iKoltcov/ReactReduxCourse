@@ -8,6 +8,7 @@ namespace StarWarsApi.Repositories
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<PlanetRepository>().As<IPlanetRepository>();
+            builder.RegisterType<CharacterRepository>().As<ICharacterRepository>();
         }
     }
 }

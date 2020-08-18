@@ -10,5 +10,7 @@ namespace StarWarsApi.Repositories
             => optionsBuilder.UseSqlServer(ConfigurationManager.GetSqlConnectionString());
 
         public DbSet<DbPlanet> Planets { get; set; }
+
+        public DbSet<DbCharacter> Characters { get; set; }
     }
 }

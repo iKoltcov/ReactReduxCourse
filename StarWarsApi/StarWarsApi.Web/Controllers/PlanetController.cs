@@ -31,12 +31,14 @@ namespace StarWarsApi.Controllers
         }
 
         [HttpPut]
-        public async Task<PlanetModel> PutPlanet([FromBody] PlanetModel planet)
+        public async Task<PlanetApiModel> PutPlanet([FromBody] PlanetModel planet)
         {
-            return await PlanetService.PutPlanetAsync(new PlanetModel()
+            var result = await PlanetService.PutPlanetAsync(new PlanetModel()
             {
                 Name = planet.Name,
             });
+            
+            return ToPlanetApiModel(result);
         }
 
         private static PlanetApiModel ToPlanetApiModel(PlanetModel model)
