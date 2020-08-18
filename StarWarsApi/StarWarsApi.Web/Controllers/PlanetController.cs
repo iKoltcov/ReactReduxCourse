@@ -9,6 +9,7 @@ namespace StarWarsApi.Controllers
 {    
     [ApiController]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class PlanetController : ControllerBase
     {
         private IPlanetService PlanetService { get; }
@@ -24,7 +25,18 @@ namespace StarWarsApi.Controllers
             return (await PlanetService.GetPlanetsAsync(
                 int.TryParse(Request.Query["page"], out var page) ? page : 1,
                 int.TryParse(Request.Query["count"], out var count) ? count : 100)
-                ).Select(ToPlanetApiModel).ToArray();
+                )
+                .Select(ToPlanetApiModel)
+                .ToArray();
+        }
+
+        [HttpPut]
+        public async Task<PlanetModel> PutPlanet([FromBody] PlanetModel planet)
+        {
+            return await PlanetService.PutPlanetAsync(new PlanetModel()
+            {
+                Name = planet.Name,
+            });
         }
 
         private static PlanetApiModel ToPlanetApiModel(PlanetModel model)
@@ -33,7 +45,6 @@ namespace StarWarsApi.Controllers
             {
                 Id = model.Id,
                 Name = model.Name,
-                Age = model.Age,
             };
         }
     }

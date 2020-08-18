@@ -5,6 +5,8 @@ namespace StarWarsApi.Services.Abstraction
 {
     public interface IPlanetService
     {
-        public Task<PlanetModel[]> GetPlanetsAsync(int page, int count);
+        public Task<PlanetModel[]> GetPlanetsAsync(int pageNumber, int pageSize);
+
+        Task<PlanetModel> PutPlanetAsync(PlanetModel planet);
     }
 }

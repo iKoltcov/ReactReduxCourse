@@ -1,9 +1,13 @@
+using System;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using StarWarsApi.Web.Abstraction.ApiModels;
 
 namespace StarWarsApi
 {
@@ -19,8 +23,15 @@ namespace StarWarsApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddSwaggerGen();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".StarWarsApi.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
+                options.Cookie.IsEssential = true;
+            });
         }
         
         public void ConfigureContainer(ContainerBuilder builder)
@@ -40,10 +51,12 @@ namespace StarWarsApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "StarWars API v1");
             });
-            
+
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseSession();
+
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

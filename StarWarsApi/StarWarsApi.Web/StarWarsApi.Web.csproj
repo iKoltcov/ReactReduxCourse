@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\StarWarsApi.Configuration\StarWarsApi.Configuration.csproj" />
       <ProjectReference Include="..\StarWarsApi.Services\StarWarsApi.Services.csproj" />
       <ProjectReference Include="..\StarWarsApi.Web.Abstraction\StarWarsApi.Web.Abstraction.csproj" />
     </ItemGroup>

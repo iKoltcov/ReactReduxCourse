@@ -1,6 +1,6 @@
-namespace StarWarsApi.Services.Abstraction.Models
+namespace StarWarsApi.Repositories.Abstraction.Projections
 {
-    public class PlanetModel
+    public class PlanetProjection
     {
         public int Id { get; set; }
         
