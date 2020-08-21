@@ -1,5 +1,6 @@
 .header-component {
-    margin: 2rem 0 2rem 0; 
+    margin: 0 auto 0 auto;
+    text-align: center;
 }
 
 .header-component .route-panel {

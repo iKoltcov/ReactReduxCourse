@@ -5,12 +5,16 @@ import './list-item.css';
 export default class ListItem extends Component {
     render() {
         const items = this.props.items.map((item) => {
-            return (<li className='list-group-item' key={item.id} onClick={() => this.props.onChoseItem(item.id)}>{item.name}</li>);
+            return (<button className='btn btn-outline-success item-button' 
+                            key={item.id} 
+                            onClick={() => this.props.onChoseItem(item.id)}>
+                                {item.name}
+                    </button>);
         });
         
         return (
-            <div className='col-4'>
-                <ul className='list-component list-group'>{items}</ul>
+            <div className='list-panel jumbotron col-4'>
+                {items}
             </div>
         );
     }
