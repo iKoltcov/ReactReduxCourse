@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SwapiService from '../../service/swapi-service.js';
 import Header from '../header/header';
 import ListItem from '../list-item/list-item';
-import Content from '../content/content';
+import CharacterPanel from '../character-panel/character-panel.js';
 
 import './app.css'
 
@@ -48,7 +48,7 @@ export default class App extends Component {
                     <Header />
                     <div className='d-flex'>
                         <ListItem items={this.state.list.items} onChoseItem={this.onChoseItem}/>
-                        <Content itemId={this.state.itemId}/>
+                        <CharacterPanel itemId={this.state.itemId}/>
                     </div>
                 </div>
             </React.StrictMode>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../service/swapi-service';
 import Spinner from '../spinner/spinner.js'
+import CharacterView from './character-view.js';
 
 import './character-panel.css';
 
@@ -43,46 +44,11 @@ export default class CharacterPanel extends Component {
         }
 
         return(
-            <React.Fragment>
-                {!!character ? (<CharacterView character={character}/>) : null}
-            </React.Fragment>
+            <div className='col-8 jumbotron character-panel'>
+                {!!character 
+                    ? (<CharacterView character={character}/>) 
+                    : null}
+            </div>
         );
     }
-};
-
-const CharacterView = (props) => {
-    const { character } = props;
-    return (
-        <React.Fragment>
-            <h4>{character.name}</h4>
-            <table className='table'>
-                <tbody>
-                    <tr>
-                        <th>Gender</th>
-                        <td>{character.gender}</td>
-                    </tr>
-                    <tr>
-                        <th>Birth Year</th>
-                        <td>{character.birthYear}</td>
-                    </tr>
-                    <tr>
-                        <th>Height</th>
-                        <td>{character.height}</td>
-                    </tr>
-                    <tr>
-                        <th>Mass</th>
-                        <td>{character.mass}</td>
-                    </tr>
-                    <tr>
-                        <th>Eye Color</th>
-                        <td>{character.eyeColor}</td>
-                    </tr>
-                    <tr>
-                        <th>Hair Color</th>
-                        <td>{character.hairColor}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </React.Fragment>
-    );
 };
