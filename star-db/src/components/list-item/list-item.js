@@ -13,7 +13,7 @@ export default class ListItem extends Component {
         });
         
         return (
-            <div className='list-panel jumbotron col-4'>
+            <div className='col-5 list-panel jumbotron'>
                 {items}
             </div>
         );

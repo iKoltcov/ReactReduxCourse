@@ -46,9 +46,11 @@ export default class App extends Component {
             <React.StrictMode>
                 <div className='starwars-db-app'>
                     <Header />
-                    <div className='d-flex'>
-                        <ListItem items={this.state.list.items} onChoseItem={this.onChoseItem}/>
-                        <CharacterPanel itemId={this.state.itemId}/>
+                    <div className='container'>
+                        <div className='row'>
+                            <ListItem items={this.state.list.items} onChoseItem={this.onChoseItem}/>
+                            <CharacterPanel itemId={this.state.itemId}/>
+                        </div>
                     </div>
                 </div>
             </React.StrictMode>

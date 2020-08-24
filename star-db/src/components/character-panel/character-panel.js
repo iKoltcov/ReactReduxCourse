@@ -37,17 +37,16 @@ export default class CharacterPanel extends Component {
 
     render() {
         const { isLoading, character = null } = this.state;
+        let content = <Spinner />;
 
-        if(isLoading)
+        if(!isLoading)
         {
-            return <Spinner />;
+            content = !!character ? (<CharacterView character={character}/>) : null;
         }
 
         return(
-            <div className='col-8 jumbotron character-panel'>
-                {!!character 
-                    ? (<CharacterView character={character}/>) 
-                    : null}
+            <div className='col jumbotron character-panel'>
+                {content}
             </div>
         );
     }
