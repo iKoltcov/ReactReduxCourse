@@ -8,34 +8,11 @@ import './app.css'
 
 export default class App extends Component {
     state = {
-        itemId: 1,        
-        list: {
-            items: [],
-            page: 1,
-            route: 'characters',
-        },
+        itemId: 1,   
+        page: 1,
     };
 
     service = new SwapiService();
-
-    componentDidMount(){
-        this.updateList();
-    }
-
-    updateList() {
-        const { list } = this.state;
-        switch(list.route){
-            case 'characters':
-                this.service.getCharacters()
-                    .then((results) => {
-                        const items = results.map( (item) => ({ id: item.id, name: item.name }));
-                        this.setState({ list: { items } });
-                    });
-                break;
-            default:
-                break;
-        }
-    }
 
     onChoseItem = (itemId) => {
         this.setState({ itemId });
@@ -48,7 +25,7 @@ export default class App extends Component {
                     <Header />
                     <div className='container'>
                         <div className='row'>
-                            <ListItem items={this.state.list.items} onChoseItem={this.onChoseItem}/>
+                            <ListItem getData={this.service.getCharacters} page={this.state.page} onChoseItem={this.onChoseItem}/>
                             <CharacterPanel itemId={this.state.itemId}/>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../service/swapi-service';
 import Spinner from '../spinner/spinner.js'
-import CharacterView from './character-view.js';
+import CharacterView from '../character-view/character-view.js';
 
 import './character-panel.css';
 

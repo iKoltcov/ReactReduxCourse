@@ -1,7 +1,7 @@
 export default class SwapiService {
     _baseUrl = `https://swapi.dev/api`;
 
-    async getResource (url) {
+    getResource = async (url) => {
         const res = await fetch(`${this._baseUrl}${url}`);
 
         if(!res.ok){
@@ -11,12 +11,12 @@ export default class SwapiService {
         return await res.json();
     }
 
-    async getCharacters(page = 1) {
+    getCharacters = async (page = 1) => {
         const response = await this.getResource(`/people/?page=${page}`); 
         return response.results.map(this.transormCharacter);
     }
 
-    async getCharacter(id) {
+    getCharacter = async (id) => {
         const response = await this.getResource(`/people/${id}/`); 
         return this.transormCharacter(response);
     }
