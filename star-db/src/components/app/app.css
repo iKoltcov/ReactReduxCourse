@@ -1,17 +1,19 @@
+.starwars-db-app {
+    margin: 0 auto 0 auto;
+}
+
 @media screen and (max-width: 600px) {
     .starwars-db-app {
-        margin: 0 auto 0 auto;
         max-width: 90%;
     }
 }
 
 @media screen and (min-width: 600px) {
     .starwars-db-app {
-        margin: 0 auto 0 auto;
         max-width: 600px;
     }
 }
 
 div.jumbotron {
-    padding: 1rem;
+    padding: 0.5rem;
 }

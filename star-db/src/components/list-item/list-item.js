@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import './list-item.css';
 import Spinner from '../spinner/spinner';
+import ErrorBoundary from '../error-boundary/error-boundary';
 
 export default class ListItem extends Component {
     state = {
@@ -33,20 +34,21 @@ export default class ListItem extends Component {
         const { itemList, isLoading } = this.state;
         let content = <Spinner />;
 
-        if( !isLoading && !!itemList)
+        if(!isLoading)
         {
-            content = itemList.map((item) => {
-                return (<button className='btn btn-outline-success item-button' 
-                                key={item.id} 
-                                onClick={() => this.props.onChoseItem(item.id)}>
-                                    {item.name}
-                        </button>);
-            });
+            const items = itemList.map((item) => {
+                    return (<button className='btn btn-outline-success item-button' 
+                                    key={item.id} 
+                                    onClick={() => this.props.onChoseItem(item.id)}>
+                                        {item.name}
+                            </button>);
+                });
+            content = !!itemList ? items : null;
         }
-        
+
         return (
-            <div className='col-5 list-panel jumbotron'>
-                {content}
+            <div className='list-panel jumbotron'>
+                <ErrorBoundary>{content}</ErrorBoundary>
             </div>
         );
     }

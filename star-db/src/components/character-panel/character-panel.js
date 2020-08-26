@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import SwapiService from '../../service/swapi-service';
 import Spinner from '../spinner/spinner.js'
 import CharacterView from '../character-view/character-view.js';
+import ErrorBoundary from '../error-boundary/error-boundary.js';
 
 import './character-panel.css';
 
@@ -45,8 +47,8 @@ export default class CharacterPanel extends Component {
         }
 
         return(
-            <div className='col jumbotron character-panel'>
-                {content}
+            <div className='jumbotron character-panel'>
+                <ErrorBoundary>{content}</ErrorBoundary>
             </div>
         );
     }

@@ -1,0 +1,13 @@
+.item-details {
+    text-align: center;
+}
+
+.character-image {
+    width: 150px;
+    border-radius: 10px;
+    margin: 1rem auto 1rem auto;
+}
+
+.item-details table {
+    text-align: left;
+}
