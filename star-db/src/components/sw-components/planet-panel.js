@@ -3,7 +3,7 @@ import React from 'react';
 import DetailsPanel from '../details-panel/details-panel.js';
 import DetailsView, { Detail } from '../details-view/details-view.js';
 import withData from '../hoc-helpers/with-data.js'
-import SwapiService from '../../service/swapi-service.js';
+import SwapiService from '../../services/swapi-service.js';
 
 const swapiService = new SwapiService();
 const { getPlanet } = swapiService;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import withData from '../hoc-helpers/with-data.js';
 import ListItem from '../list-item/list-item';
-import SwapiService from '../../service/swapi-service.js';
+import SwapiService from '../../services/swapi-service.js';
 
 const swapiService = new SwapiService();
 const { getCharacters, getPlanets, getStarships } = swapiService;
