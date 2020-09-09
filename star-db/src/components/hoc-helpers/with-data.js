@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const withData = (Wrapped, getData) => {
+const withData = (Wrapped) => {
     return class extends Component {
         state = {
             data: null
@@ -17,7 +17,7 @@ const withData = (Wrapped, getData) => {
         }
     
         updateData() {
-            getData(this.props.itemId)
+            this.props.getData(this.props.itemId)
                 .then((result) => {
                     this.setState({ data: result });
                 });

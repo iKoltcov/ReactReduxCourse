@@ -9,7 +9,12 @@ import PlanetPanel from '../sw-components/planet-panel.js';
 import StarshipPanel from '../sw-components/starship-panel.js';
 import { CharactersList, PlanetsList, StarshipsList } from '../sw-components/sw-lists.js';
 
+import SwapiService from '../../services/swapi-service.js';
+import { SwapiServiceProvider } from '../../contexts/swapi-service-context.js';
+
 export default class App extends Component {
+    swapiService = new SwapiService();
+
     state = {
         itemId: 1,
         page: 1
@@ -37,12 +42,14 @@ export default class App extends Component {
 
         return (
             <React.StrictMode>
-                <div className='starwars-db-app'>
-                    <Header />
-                    <Row left={rows[0][0]} right={rows[0][1]} />
-                    {/*<Row left={rows[1][0]} right={rows[1][1]} />*/}
-                    {/*<Row left={rows[2][0]} right={rows[2][1]} />*/}
-                </div>
+                <SwapiServiceProvider value={this.swapiService} >
+                    <div className='starwars-db-app'>
+                        <Header />
+                        <Row left={rows[0][0]} right={rows[0][1]} />
+                        {/*<Row left={rows[1][0]} right={rows[1][1]} />*/}
+                        {/*<Row left={rows[2][0]} right={rows[2][1]} />*/}
+                    </div>
+                </SwapiServiceProvider>
             </React.StrictMode>
         );
     }

@@ -1,14 +1,12 @@
 import React from 'react';
 
+import withData from '../hoc-helpers/with-data.js'
+import withSwapiService from '../hoc-helpers/with-swapi-service.js';
+
 import DetailsPanel from '../details-panel/details-panel.js';
 import DetailsView, { Detail } from '../details-view/details-view.js';
-import withData from '../hoc-helpers/with-data.js'
-import SwapiService from '../../services/swapi-service.js';
 
-const swapiService = new SwapiService();
-const { getCharacter } = swapiService;
-
-const CharacterPanel = ({data}) => 
+const CharacterPanel = ({data}) =>
 {
     return (
         <DetailsPanel 
@@ -28,4 +26,8 @@ const CharacterPanel = ({data}) =>
     );
 };
 
-export default withData(CharacterPanel, getCharacter);
+export default withSwapiService(
+    withData(CharacterPanel),
+    (service) => {
+        return { getData: service.getCharacter } }
+);
