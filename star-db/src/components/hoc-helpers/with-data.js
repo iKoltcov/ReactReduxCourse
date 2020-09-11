@@ -17,10 +17,12 @@ const withData = (Wrapped) => {
         }
     
         updateData() {
-            this.props.getData(this.props.itemId)
-                .then((result) => {
-                    this.setState({ data: result });
-                });
+            if(!!this.props.itemId){
+                this.props.getData(this.props.itemId)
+                    .then((result) => {
+                        this.setState({ data: result });
+                    });
+            }
         }
 
         render() 
