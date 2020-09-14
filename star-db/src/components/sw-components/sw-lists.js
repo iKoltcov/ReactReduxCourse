@@ -8,23 +8,14 @@ const List = ({ data, itemId, onChoseItem }) => {
     return <ListItem data={data} page={itemId} onChoseItem={onChoseItem} />;
 };
 
-const CharactersList = withSwapiService(
-    withData(List),
-    (service) => {
-        return { getData: service.getCharacters };
-    });
+const CharactersList = withSwapiService(withData(List))
+    (    (service) => { return { getData: service.getCharacters }; });
 
-const PlanetsList = withSwapiService(
-    withData(List),
-    (service) => {
-        return { getData: service.getPlanets };
-    });
+const PlanetsList = withSwapiService(withData(List))
+    (    (service) => { return { getData: service.getPlanets }; });
 
-const StarshipsList = withSwapiService(
-    withData(List),
-    (service) => {
-        return { getData: service.getStarships };
-    });
+const StarshipsList = withSwapiService(withData(List))
+    (    (service) => { return { getData: service.getStarships }; });
 
 export {
     CharactersList,

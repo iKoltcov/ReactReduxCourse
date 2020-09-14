@@ -6,7 +6,7 @@ import withSwapiService from '../hoc-helpers/with-swapi-service.js';
 import DetailsPanel from '../details-panel/details-panel.js';
 import DetailsView, { Detail } from '../details-view/details-view.js';
 
-const CharacterPanel = ({data}) =>
+const CharacterPanel = ( { data } ) =>
 {
     return (
         <DetailsPanel 
@@ -26,8 +26,5 @@ const CharacterPanel = ({data}) =>
     );
 };
 
-export default withSwapiService(
-    withData(CharacterPanel),
-    (service) => {
-        return { getData: service.getCharacter } }
-);
+export default withSwapiService(withData(CharacterPanel))
+    ((service) => { return { getData: service.getCharacter } } );

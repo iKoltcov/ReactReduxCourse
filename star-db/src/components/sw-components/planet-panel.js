@@ -20,8 +20,5 @@ const PlanetPanel = ({ data }) => {
     );
 };
 
-export default withSwapiService(
-    withData(PlanetPanel),
-    (service) => {
-        return { getData: service.getPlanet };
-    });
+export default withSwapiService(withData(PlanetPanel))
+    ((service) => { return { getData: service.getPlanet } });

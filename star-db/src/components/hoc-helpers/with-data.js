@@ -1,35 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const withData = (Wrapped) => {
-    return class extends Component {
-        state = {
-            data: null
-        }
+const withData = Wrapped => props => {
+    const [ data, setData ] = useState(null);
 
-        componentDidMount() {
-            this.updateData();
+    useEffect(() => {
+        if(props.itemId !== null){
+            props.getData(props.itemId)
+                .then((result) => {
+                    setData(result);
+                });
         }
-    
-        componentDidUpdate(prevProps) {
-            if(this.props.itemId !== prevProps.itemId){
-                this.updateData();
-            }
-        }
-    
-        updateData() {
-            if(!!this.props.itemId){
-                this.props.getData(this.props.itemId)
-                    .then((result) => {
-                        this.setState({ data: result });
-                    });
-            }
-        }
+    })
 
-        render() 
-        {
-            return <Wrapped {...this.props} data={this.state.data} />;
-        }
-    }
+    return <Wrapped {...props} data={data} />;
 };
 
 export default withData;

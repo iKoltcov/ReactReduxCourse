@@ -24,9 +24,5 @@ const StarshipPanel = ({ data }) => {
     );
 };
 
-export default withSwapiService(
-    withData(StarshipPanel),
-    (service) => {
-        return { getData: service.getStarship };
-    }
-);
+export default withSwapiService(withData(StarshipPanel))
+    ((service) => { return { getData: service.getStarship } });

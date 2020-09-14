@@ -1,20 +1,10 @@
-import React, { Component } from 'react';
-import { SwapiServiceConsumer } from '../../contexts/swapi-service-context.js';
+import React, { useContext } from 'react';
+import SwapiServiceContext from '../../contexts/swapi-service-context.js';
 
-const withSwapiService = (Wrapped, mapMethodToProps) => {
-    return class extends Component {
-        render() {
-            return (
-                <SwapiServiceConsumer>
-                    {
-                        (service) => {
-                            return <Wrapped {...this.props} {...mapMethodToProps(service)} />
-                        }
-                    }
-                </SwapiServiceConsumer>
-            );
-        }
-    };
+const withSwapiService = Wrapped => mapMethodToProps => props => {
+    const service = useContext(SwapiServiceContext);
+
+    return <Wrapped {...props} {...mapMethodToProps(service)} />
 }
 
 export default withSwapiService;

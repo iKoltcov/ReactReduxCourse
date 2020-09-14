@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import Header from '../header/header.js';
 import { CharactersPage, PlanetsPage, StarshipsPage } from '../sw-pages';
 import './app.css';
 
 import SwapiService from '../../services/swapi-service.js';
-import { SwapiServiceProvider } from '../../contexts/swapi-service-context.js';
+import DummySwapiService from '../../services/dummy-swapi-service.js';
+import SwapiServiceContext from '../../contexts/swapi-service-context.js';
 
-export default class App extends Component {
-    state = {
-        swapiService: new SwapiService()
-    }
+const App = () => {
+    const [ swapiService ] = useState(new DummySwapiService());
 
-    render() {
-        return (
-            <React.StrictMode>
-                <SwapiServiceProvider value={this.state.swapiService} >
-                    <div className='starwars-db-app'>
-                        <Header />
-                        <CharactersPage />
-                        <PlanetsPage />
-                        <StarshipsPage />
-                    </div>
-                </SwapiServiceProvider>
-            </React.StrictMode>
-        );
-    }
+    return (
+        <React.StrictMode>
+            <SwapiServiceContext.Provider value={swapiService} >
+                <div className='starwars-db-app'>
+                    <Header />
+                    <CharactersPage />
+                    <PlanetsPage />
+                    <StarshipsPage />
+                </div>
+            </SwapiServiceContext.Provider>
+        </React.StrictMode>
+    );
 }
+
+export default App;
