@@ -1,15 +1,18 @@
 import React  from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css';
 
 const Header = () => {
     return (
         <div className="header-component d-flex">
-            <h1>StarWars DB</h1>
+            <h1>
+                <Link to='/'>StarWars DB</Link>
+            </h1>
             <div className='route-panel'>
-                <button className='btn btn-link'>Characters</button>
-                <button className='btn btn-link'>Starships</button>
-                <button className='btn btn-link'>Planets</button>
+                <Link className='btn btn-link' to='/characters'>Characters</Link>
+                <Link className='btn btn-link' to='/starships'>Starships</Link>
+                <Link className='btn btn-link' to='/planets'>Planets</Link>
             </div>
         </div>
     );
