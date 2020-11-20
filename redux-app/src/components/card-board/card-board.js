@@ -6,10 +6,6 @@ import CardItem from '../card-item/card-item.js'
 import './card-board.css';
 
 class CardBoard extends Component {
-    state = {
-        items: [],
-    }
-
     componentDidMount = () => {
         const { apiService, updateItems } = this.props;
         updateItems(apiService.getItems());
