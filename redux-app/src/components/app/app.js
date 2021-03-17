@@ -7,7 +7,7 @@ import { ApiServiceProvider } from '../api-service-context';
 import ApiService from '../../services/apiService';
 
 import Header from '../header/header.js'
-import CardBoard from '../card-board/card-board.js'
+import CardGrid from '../card-grid/card-grid.js'
 
 const apiService = new ApiService();
 
@@ -20,7 +20,7 @@ const App = () => {
                         <Header />
                         <Switch>
                             <Route path='/item/:id?' render={({match}) => `product ${match.params.id}`}/>
-                            <Route path='/' component={({match}) => <CardBoard id={match.params.id} />}/>
+                            <Route path='/' component={({match}) => <CardGrid id={match.params.id} />}/>
                         </Switch>
                     </BrowserRouter>
                 </ApiServiceProvider>

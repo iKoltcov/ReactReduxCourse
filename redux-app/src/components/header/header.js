@@ -1,13 +1,14 @@
 import React from 'react'
+import { Container, Header as SemanticHeader } from 'semantic-ui-react'
+
+import AccountPanel from '../account-panel/account-panel.js'
 
 const Header = () => {
     return (
-        <div className="jumbotron jumbotron-fluid">
-            <div className="container">
-                <h1 className="display-4">ReStore</h1>
-                <p className="lead">React-Redux web app</p>
-            </div>
-        </div>
+        <Container className='header'>
+            <SemanticHeader as='h1'>ReStore</SemanticHeader>
+            <AccountPanel />
+        </Container>
     );
 }
 
