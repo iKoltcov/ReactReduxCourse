@@ -1,5 +1,7 @@
-const updateItemsType = 'UPDATE_PRODUCT';
+const updateItemsType = 'UPDATE_ITEMS';
+const updateUserType = 'UPDATE_USER';
 
 export {
     updateItemsType,
+    updateUserType,
 }

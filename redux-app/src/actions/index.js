@@ -1,4 +1,4 @@
-import { updateItemsType } from './types.js';
+import {updateItemsType, updateUserType} from './types.js';
 
 const updateItems = (data) => {
     return { 
@@ -7,6 +7,14 @@ const updateItems = (data) => {
     }
 }
 
+const updateUser = (data) => {
+    return {
+        type: updateUserType,
+        data,
+    }
+}
+
 export {
     updateItems,
+    updateUser,
 }
