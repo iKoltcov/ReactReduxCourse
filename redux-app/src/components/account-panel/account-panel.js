@@ -6,6 +6,7 @@ import { updateUser } from "../../actions";
 
 import './account-panel.css';
 import withApiService from "../../utils/withApiService";
+import {Link} from "react-router-dom";
 
 class AccountPanel extends Component {
     componentDidMount = () => {
@@ -37,10 +38,12 @@ class AccountPanel extends Component {
                         {user.name}
                     </div>
                     <div>
-                        <Button as='div' labelPosition='left'>
-                            <Label basic>${totalPurchased}</Label>
-                            <Button icon><Icon name='shop'/></Button>
-                        </Button>
+                        <Link to='/cart'>
+                            <Button as='div' labelPosition='left'>
+                                <Label basic>${totalPurchased}</Label>
+                                <Button icon><Icon name='shop'/></Button>
+                            </Button>
+                        </Link>
                     </div>
                 </div>
                 <Divider />
