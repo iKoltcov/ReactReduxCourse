@@ -6,15 +6,22 @@ import { updateItems } from '../../actions';
 
 import CardItem from '../card-item/card-item.js';
 
-import { Grid } from 'semantic-ui-react';
+import {Loader, Dimmer, Grid} from 'semantic-ui-react';
 
 class CardGrid extends Component {
     componentDidMount = () => {
         const { apiService, updateItems } = this.props;
-        updateItems(apiService.getItems());
+        apiService.getItems()
+            .then((data) => updateItems(data))
     }
 
     render() {
+        if(!this.props.items || (this.props.items && this.props.items.length === 0)){
+            return (
+                <Dimmer active inverted>
+                    <Loader inverted>Loading</Loader>
+                </Dimmer>)
+        }
         const items = this.props.items.map((value) => 
             <Grid.Column width='4' key={value.id}>
                 <CardItem data={value}/>

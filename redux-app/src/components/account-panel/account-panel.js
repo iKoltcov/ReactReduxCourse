@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Label, Icon, Divider, Loader } from 'semantic-ui-react'
+import { Button, Label, Icon, Divider, Loader, Dimmer, Segment } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
 import { updateUser } from "../../actions";
@@ -10,21 +10,28 @@ import withApiService from "../../utils/withApiService";
 class AccountPanel extends Component {
     componentDidMount = () => {
         const { apiService, updateUser } = this.props;
-        const user = apiService.getUser();
-        updateUser(user);
+        apiService.getUser()
+            .then((data) => updateUser(data));
     }
 
     render() {
         const user = this.props.user;
         if(!user){
             return (
-                <Loader />
+                <Segment basic>
+                    <div className='account-panel'>
+                        <Dimmer active inverted>
+                            <Loader inverted>Loading</Loader>
+                        </Dimmer>
+                    </div>
+                    <Divider />
+                </Segment>
             )
         }
 
         const totalPurchased = user.purchased.reduce((a, b) => a + b.price, 0)
         return (
-            <>
+            <Segment basic>
                 <div className='account-panel'>
                     <div>
                         {user.name}
@@ -37,7 +44,7 @@ class AccountPanel extends Component {
                     </div>
                 </div>
                 <Divider />
-            </>
+            </Segment>
         )
     }
 }
