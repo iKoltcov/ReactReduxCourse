@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Button, Label, Icon, Divider } from 'semantic-ui-react'
+import { Button, Label, Icon, Divider } from 'semantic-ui-react'
 
 import './account-panel.css';
 

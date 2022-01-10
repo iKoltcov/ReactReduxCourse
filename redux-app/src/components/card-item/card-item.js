@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Image } from 'semantic-ui-react';
+import {Card, Image, Button, Icon} from 'semantic-ui-react';
 import './card-item.css'
 
 const CardItem = ({ data }) => (
@@ -8,7 +8,12 @@ const CardItem = ({ data }) => (
         <Image src={`https://picsum.photos/200/300?random=${data.id}`}/>
         <Card.Content>
             <Card.Header>{data.name}</Card.Header>
-            <Card.Meta>{data.price}</Card.Meta>
+            <Card.Meta>
+                <Button className='buy-button' icon>
+                    <span>{data.price}</span>
+                    <Icon name='add to cart'/>
+                </Button>
+            </Card.Meta>
             <Card.Description>{data.description}</Card.Description>
         </Card.Content>
     </Card>
