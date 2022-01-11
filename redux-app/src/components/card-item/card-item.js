@@ -3,13 +3,13 @@ import React from 'react';
 import {Card, Image, Button, Icon} from 'semantic-ui-react';
 import './card-item.css'
 
-const CardItem = ({ data }) => (
+const CardItem = ({ data, onAddedToCart }) => (
     <Card>
         <Image src={`https://picsum.photos/200/300?random=${data.id}`}/>
         <Card.Content>
             <Card.Header>{data.name}</Card.Header>
             <Card.Meta>
-                <Button className='buy-button' icon>
+                <Button className='buy-button' icon onClick={onAddedToCart}>
                     <span>{data.price}</span>
                     <Icon name='add to cart'/>
                 </Button>

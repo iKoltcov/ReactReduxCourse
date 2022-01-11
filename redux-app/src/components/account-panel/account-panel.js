@@ -30,7 +30,7 @@ class AccountPanel extends Component {
             )
         }
 
-        const totalPurchased = user.purchased.reduce((a, b) => a + b.price, 0)
+        const totalPurchased = user.purchased.reduce((a, b) => a + b.price * b.amount, 0)
         return (
             <Segment basic>
                 <div className='account-panel'>
